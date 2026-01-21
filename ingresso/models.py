@@ -90,6 +90,7 @@ class Product(models.Model):
     qtd = models.IntegerField()
     
 class Events(models.Model):
+    
     name = models.CharField(max_length=100),
     describe = models.CharField(blank=True),
     start_datetime = models.DateTimeField(),
@@ -129,7 +130,7 @@ class Ticket_Product(models.Model):
         related_name='tickets_produtos'
     )
     name = models.CharField(),
-    price = models.DecimalField(max_length=10, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.PositiveIntegerField()
     is_active = models.BooleanField(default=True)
     
@@ -178,7 +179,9 @@ class Ticket(models.Model):
         related_name='tickets')
     event = models.ForeignKey(
         Events, 
-        on_delete=models.PROTECT
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True
         )
     used_in = models.DateTimeField()
     validity = models.DateTimeField()
