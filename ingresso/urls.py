@@ -5,6 +5,7 @@ from .views import (
 #     comprar_ingresso,
 #     confirmar_pagamento,
     registrar_cliente,
+    create_user,
 
 #     EventoAdminView,
 #     IngressoAdminView,
@@ -20,6 +21,7 @@ urlpatterns = [
     # path('comprar/', comprar_ingresso),
     # path('confirmar-pagamento/', confirmar_pagamento),
     path('registrar/', registrar_cliente),
+    path('users/',create_user),
 
     # # ADMIN
     # path('admin/eventos/', EventoAdminView.as_view()),
