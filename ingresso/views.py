@@ -11,7 +11,7 @@ from rest_framework.response import Response
 #from .serializers_cliente import EventoClienteSerializer, IngressoClienteSerializer, CompraClienteSerializer, PagamentoClienteSerializer
 
 from django.contrib.auth.hashers import make_password
-from .models import Usuario, Clients
+# from .models import Usuario, Clients
 from rest_framework import status
 
 # ----- CLIENTE -----
@@ -113,13 +113,13 @@ def registrar_cliente(request):
     username = request.data.get('username')
     password = request.data.get('password')
 
-    if Usuario.objects.filter(username=username).exists():
-        return Response({"erro": "Usuário já existe."}, status=status.HTTP_400_BAD_REQUEST)
+    # if Usuario.objects.filter(username=username).exists():
+    #     return Response({"erro": "Usuário já existe."}, status=status.HTTP_400_BAD_REQUEST)
 
-    usuario = Usuario.objects.create(
-        username=username,
-        password=make_password(password)
-    )
+    # usuario = Usuario.objects.create(
+    #     username=username,
+    #     password=make_password(password)
+    # )
 
     return Response({"mensagem": "Usuário cadastrado com sucesso!"}, status=status.HTTP_201_CREATED)
 
@@ -133,25 +133,25 @@ def create_user(request):
     cpf = request.data.get('cpf')
     birthday = request.data.get('birthday')
 
-    if Usuario.objects.filter(username=username).exists():
-        return Response({"erro": "Usuário já existe."}, status=status.HTTP_400_BAD_REQUEST)
+    # if Usuario.objects.filter(username=username).exists():
+    #     return Response({"erro": "Usuário já existe."}, status=status.HTTP_400_BAD_REQUEST)
     
-    if Clients.objects.filter(cpf=cpf).exists():
-        return Response({"erro": "Cliente ja registrado."}, status=status.HTTP_400_BAD_REQUEST)
+    # if Clients.objects.filter(cpf=cpf).exists():
+    #     return Response({"erro": "Cliente ja registrado."}, status=status.HTTP_400_BAD_REQUEST)
 
-    cliente = Clients.objects.create(
-        cpf = cpf,
-        first_name = first_name,
-        last_name = last_name,
-        birthday = birthday
-    )
-    print(cliente)
+    # cliente = Clients.objects.create(
+    #     cpf = cpf,
+    #     first_name = first_name,
+    #     last_name = last_name,
+    #     birthday = birthday
+    # )
+    # print(cliente)
 
-    usuario = Usuario.objects.create(
-        username = username,
-        password = make_password(password),
-        email = email
-    )
-    print(usuario)
+    # usuario = Usuario.objects.create(
+    #     username = username,
+    #     password = make_password(password),
+    #     email = email
+    # )
+    # print(usuario)
 
     return Response({"mensagem": "Usuário cadastrado com sucesso!"}, status=status.HTTP_201_CREATED)
